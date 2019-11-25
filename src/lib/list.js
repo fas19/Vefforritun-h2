@@ -8,7 +8,7 @@ let jsonData;
 const container = document.querySelector('.list');
 
 function addEventHandlers() {
-  const lectures = document.getElementsByClassName('lecture');
+  const lectures = document.getElementsByClassName('lectures');
   for (var lecture of lectures) {
   lecture.addEventListener('click', loadLecture);
   console.log('added listener');
@@ -60,15 +60,21 @@ function loadLecture(e) {
   //  debugger;
   console.log(e.target);
   const parent = e.target.parentNode.parentNode;
-  const blah = parent.querySelector('.lecture__h2').textContent;
+  const currentSlug = parent.querySelector('.lectures__h2').textContent;
+
   // var hehe = blah.textContent;
   for  (var x of jsonData.lectures){
-     if (x.title == blah){
+    debugger;
+     if (x.title == currentSlug){
        //  console.log('scooore');
        var slug = x.slug;
        console.log('viljum fara á ' + slug);
-       debugger;
-       localStorage.setItem('data', x.slug);
+       //debugger;
+       const index = jsonData.lectures.indexOf(x);
+       localStorage.setItem('slug', x.slug);
+       localStorage.setItem('index', index);
+      // localStorage.setItem('content', x);
+      // localStorage.setItem('category', x);
        window.location.href = (`http://localhost:3000/fyrirlestur.html?slug=${slug}`);
       }
     }

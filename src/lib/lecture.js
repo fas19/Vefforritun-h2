@@ -1,4 +1,4 @@
-import { empty } from './helpers';
+import { empty, el } from './helpers';
 import {
   displayVideo,
   displayText,
@@ -8,6 +8,8 @@ import {
   displayList,
   displayCode,
 } from './TypeDisplay';
+import { isStored, saveLecture, removeLecture } from './storage';
+
 
 export default class Lecture {
   constructor() {
@@ -18,6 +20,7 @@ export default class Lecture {
     this.category = '';
     this.image = '';
     this.thumbnail = '';
+    this.slug = '';
   }
 
   displayHeader() {
@@ -70,7 +73,7 @@ export default class Lecture {
           displayImg(this.container, lecData, imgCap);
           break;
         case 'heading':
-          displayHeading(this.containter, lecData);
+          displayHeading(this.container, lecData);
           break;
         case 'list':
           displayList(this.container, lecData);
@@ -84,16 +87,57 @@ export default class Lecture {
     });
   }
 
-  displayFooter(page, lecSlug) {
+  lecFinito() {
+    const elem = document.querySelector('.footer__finish');
     const notFinished = 'Klára fyrirlestur';
     const Finished = '✔ Kláraður fyrirlestur';
-    let inner
+
+    const isFinished = elem.classList.contains('footer__finish--finished');
+
+    if (isFinished) {
+      elem.textContent = notFinished;
+      removeLecture(this.slug);
+    } else {
+      elem.textContent = Finished;
+      saveLecture(this.slug);
+    }
+
+    elem.classList.toggle('footer__finish--finished');
   }
 
-  loadLecture(page) {
+  goBack() {
+    window.location.href = 'http://localhost:3000';
+  }
+
+  displayFooter() {
+    const notFinished = 'Klára fyrirlestur';
+    const Finished = '✔ Kláraður fyrirlestur';
+
+    const finishButton = el('button', isStored(this.slug) ? Finished : notFinished); //= el('button');
+    finishButton.classList.add('footer__finish');
+    if (isStored(this.slug)) {
+      finishButton.classList.add('footer__finish--finished');
+    }
+
+    finishButton.addEventListener('click', this.lecFinito.bind(this));
+
+    const backButton = el('a', 'Til baka');
+    backButton.classList.add('footer__back');
+    backButton.setAttribute('href', '/');
+
+    const footerContent = el('div', finishButton, backButton);
+    footerContent.className = 'footer__content';
+
+    const footer = el('footer', footerContent);
+    footer.className = 'footer';
+
+    this.container.appendChild(footer);
+  }
+
+  loadLecture() {
     const lectureData = JSON.parse(sessionStorage.getItem('data'));
 
-    this.slug = lectureData.slug;
+    // this.slug = lectureData.slug;
     this.title = lectureData.title;
     this.category = lectureData.category;
     this.image = lectureData.img;
@@ -107,8 +151,14 @@ export default class Lecture {
     this.displayFooter();
   }
 
-  load(page) {
+  load() {
     empty(this.container);
-    this.loadLecture(page);
+
+    const qs = new URLSearchParams(window.location.search);
+    this.slug = qs.get('slug');
+
+    // saveLecture(this.slug);
+
+    this.loadLecture();
   }
 }

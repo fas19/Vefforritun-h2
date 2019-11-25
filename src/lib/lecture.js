@@ -24,13 +24,13 @@ export default class Lecture {
 
   displayHeader() {
     const headerCategory = el('h3', this.category);
-    headerCategory.className = 'h3';
+    headerCategory.className = 'header__h3';
 
     const headerTitle = el('h1', this.title);
-    headerTitle.className = 'h1';
+    headerTitle.className = 'header__h1';
 
     const headerContent = el('div', headerCategory, headerTitle);
-    headerContent.className = 'lecture__content';
+    headerContent.className = 'header__content';
 
     if (this.img !== 'none') {
       headerContent.style.backgroundImage = `url(${this.image})`;
@@ -39,7 +39,7 @@ export default class Lecture {
     }
 
     const header = el('header', headerContent);
-    header.className = 'lecture__header';
+    header.className = 'header';
 
     this.container.appendChild(header);
   }

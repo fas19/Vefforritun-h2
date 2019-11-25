@@ -1,4 +1,4 @@
-import { empty, el } from './helpers';
+import { empty, el, getData } from './helpers';
 import {
   displayVideo,
   displayText,
@@ -14,8 +14,7 @@ import { isStored, saveLecture, removeLecture } from './storage';
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
-    this.URL = 'lectures.json';
-    this.slug = '';
+    this.URL = '/lectures.json';
     this.title = '';
     this.category = '';
     this.image = '';
@@ -24,29 +23,23 @@ export default class Lecture {
   }
 
   displayHeader() {
-    const header = document.createElement('header');
-    header.className = 'header';
-    
-    const headerContent = document.createElement('div');
-    headerContent.className = 'header__content';
-    
-    const headerCategory = document.createElement('h3');
+    const headerCategory = el('h3', this.category);
     headerCategory.className = 'h3';
-    headerCategory.appendChild(document.createTextNode(this.category));
 
-    const headerTitle = document.createElement('h1');
+    const headerTitle = el('h1', this.title);
     headerTitle.className = 'h1';
-    headerTitle.appendChild(document.createTextNode(this.title));
+
+    const headerContent = el('div', headerCategory, headerTitle);
+    headerContent.className = 'lecture__content';
 
     if (this.img !== 'none') {
-      header.style.backgroundImage = this.img;
+      headerContent.style.backgroundImage = `url(${this.image})`;
     } else {
-      header.style.backgroundColor = '#aaa';
+      headerContent.style.backgroundColor = '#aaa';
     }
 
-    headerContent.appendChild(headerCategory);
-    headerContent.appendChild(headerTitle);
-    header.appendChild(headerContent);
+    const header = el('header', headerContent);
+    header.className = 'lecture__header';
 
     this.container.appendChild(header);
   }
@@ -134,21 +127,19 @@ export default class Lecture {
     this.container.appendChild(footer);
   }
 
-  loadLecture() {
-    const lectureData = JSON.parse(sessionStorage.getItem('data'));
+  loadLectures() {
+    const index = parseInt(localStorage.getItem('index'), 10);
 
-    // this.slug = lectureData.slug;
-    this.title = lectureData.title;
-    this.category = lectureData.category;
-    this.image = lectureData.img;
-    // this.thumbnail = lectureData.thumbnail;
-    // lectureData.thumbnail ? this.thumbnail = lectureData.thumbnail : this.thumbnail = 'none';
-    this.thumbnail = lectureData.thumbnail !== undefined ? lectureData.thumbnail : 'none';
-    // const content = lectureData.content;
-
-    this.displayHeader();
-    this.displayContent(lectureData.content);
-    this.displayFooter();
+    const lectureData = getData();
+    lectureData.then((data) => {
+      this.title = data.lectures[index].title;
+      this.category = data.lectures[index].category;
+      this.image = data.lectures[index].image;
+      this.thumbnail = data.lectures[index].thumbnail !== undefined ? data.lectures[index].thumbnail : 'none';
+      this.displayHeader();
+      this.displayContent(data.lectures[index].content);
+      this.displayFooter();
+    });
   }
 
   load() {
@@ -157,8 +148,6 @@ export default class Lecture {
     const qs = new URLSearchParams(window.location.search);
     this.slug = qs.get('slug');
 
-    // saveLecture(this.slug);
-
-    this.loadLecture();
+    this.loadLectures();
   }
 }

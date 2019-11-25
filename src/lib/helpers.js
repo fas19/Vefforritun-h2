@@ -20,6 +20,23 @@ export function el(name, ...children) {
   return element;
 }
 
+const URL = '/lectures.json';
+
+export function getData() {
+  const response = fetch(URL);
+  const json = response.then((resp) => {
+    if (!resp.ok) {
+      throw Error('Villa við að sækja mynd');
+    }
+    return resp.json();
+  })
+    .catch((e) => {
+      console.error('Error');
+      throw Error('villa við að sækja mynd');
+    });
+  return json;
+}
+
 function displayLecture(el, data) {
   let thumbnail;
   if (data.thumbnail == null) {
@@ -40,7 +57,7 @@ function displayLecture(el, data) {
   lectureImage.className = 'lectures__image';
   const lectureTitleH2 = document.createElement('h2');
   lectureTitleH2.className = 'lectures__h2';
-  lectureTitleH2.classList.add('')
+
   const lectureCategoryH3 = document.createElement('h3');
   lectureCategoryH3.className = 'lectures__h3';
 
@@ -55,7 +72,7 @@ function displayLecture(el, data) {
     lectureTitle.appendChild(checked);
 
   } else {
-  lectureTitleH2.appendChild(document.createTextNode(title));
+    lectureTitleH2.appendChild(document.createTextNode(title));
   }
 
   lectureCategoryH3.appendChild(document.createTextNode(category));

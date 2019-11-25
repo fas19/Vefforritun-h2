@@ -3,11 +3,28 @@ export function empty(element) {
     element.removeChild(element.firstChild);
   }
 }
-function displayLecture(el, data){
+
+export function el(name, ...children) {
+  const element = document.createElement(name);
+
+  if (Array.isArray(children)) {
+    for (let child of children) { /* eslint-disable-line */
+      if (typeof child === 'string') {
+        element.appendChild(document.createTextNode(child));
+      } else if (child) {
+        element.appendChild(child);
+      }
+    }
+  }
+
+  return element;
+}
+
+function displayLecture(el, data) {
   let thumbnail;
-  if(data.thumbnail == null){
+  if (data.thumbnail == null) {
     thumbnail = 'engin mynd';
-  }else{
+  } else  {
     thumbnail = data.thumbnail;
   }
   const category = data.category;
@@ -27,31 +44,27 @@ function displayLecture(el, data){
   lectureCategoryH3.className = 'headline3';
 
   // Hér þarf að koma virkni til að virkja ef búið er að klára að lesa fyrirlesturinn..
-lectureTitleH2.appendChild(document.createTextNode(title));
+  lectureTitleH2.appendChild(document.createTextNode(title));
 
-lectureCategoryH3.appendChild(document.createTextNode(category));
+  lectureCategoryH3.appendChild(document.createTextNode(category));
 
-const lectureImageImg = document.createElement('img');
-lectureImageImg.className = 'img';
-if(thumbnail == 'engin mynd'){
-  lectureImageImg.alt = 'engin mynd';
-}else{
-  lectureImageImg.src = thumbnail;
+  const lectureImageImg = document.createElement('img');
+  lectureImageImg.className = 'img';
+  if (thumbnail === 'engin mynd') {
+    lectureImageImg.alt = 'engin mynd';
+  } else  {
+    lectureImageImg.src = thumbnail;
+  }
+  // setjum saman
 
-}
-// setjum saman
-
-lectureImage.appendChild(lectureImageImg);
-lectureCategory.appendChild(lectureCategoryH3);
-lectureTitle.appendChild(lectureTitleH2);
-lecture.appendChild(lectureImage);
-lecture.appendChild(lectureTitle);
-lecture.appendChild(lectureCategory);
-const grid = document.querySelector('.grid');
-el.appendChild(lecture);
-
-
-
+  lectureImage.appendChild(lectureImageImg);
+  lectureCategory.appendChild(lectureCategoryH3);
+  lectureTitle.appendChild(lectureTitleH2);
+  lecture.appendChild(lectureImage);
+  lecture.appendChild(lectureTitle);
+  lecture.appendChild(lectureCategory);
+  const grid = document.querySelector('.grid');
+  el.appendChild(lecture);
 }
 
 function allEqual(bool) {

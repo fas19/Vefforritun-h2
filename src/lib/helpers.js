@@ -31,21 +31,28 @@ function displayLecture(el, data) {
   const title = data.title;
 
   const lecture = document.createElement('div');
-  lecture.className ='lecture';
+  lecture.className ='lectures';
   const lectureTitle = document.createElement('div');
-  lectureTitle.className = 'lecture__title';
+  lectureTitle.className = 'lectures__title';
   const lectureCategory = document.createElement('div');
-  lectureCategory.className = 'lecture__category';
+  lectureCategory.className = 'lectures__category';
   const lectureImage = document.createElement('div');
-  lectureImage.className = 'lecture__image';
+  lectureImage.className = 'lectures__image';
   const lectureTitleH2 = document.createElement('h2');
-  lectureTitleH2.className = 'lecture__h2';
+  lectureTitleH2.className = 'lectures__h2';
+  lectureTitleH2.classList.add('')
   const lectureCategoryH3 = document.createElement('h3');
-  lectureCategoryH3.className = 'lecture__h3';
+  lectureCategoryH3.className = 'lectures__h3';
 
   // Hér þarf að koma virkni til að virkja ef búið er að klára að lesa fyrirlesturinn..
-  if (false) {
+  if (Math.floor((Math.random()* 11) > 8)) {
+    lectureTitle.classList.add('lectures__title-active');
+    const checked = document.createElement('h2');
+    checked.classList.add('lectures__h2', 'lectures__checked');
+    checked.appendChild(document.createTextNode('✓'));
     console.log('fyrirlestur kláraður');
+    lectureTitleH2.appendChild(document.createTextNode('lololo'));
+    lectureTitle.appendChild(checked);
 
   } else {
   lectureTitleH2.appendChild(document.createTextNode(title));
@@ -56,11 +63,11 @@ function displayLecture(el, data) {
   
   if (thumbnail === 'engin mynd') {
     const lectureImageDiv = document.createElement('div');
-    lectureImageDiv.className = 'lecture__noImg';
+    lectureImageDiv.className = 'lectures__noImg';
     lectureImage.appendChild(lectureImageDiv);
   } else {
     const lectureImageImg = document.createElement('img');
-    lectureImageImg.className = 'lecture__image-img';
+    lectureImageImg.className = 'lectures__image-img';
     lectureImageImg.src = thumbnail;
     lectureImage.appendChild(lectureImageImg);
   }

@@ -1,0 +1,130 @@
+@import "config";
+
+.main{
+    max-width: 1500px;
+    margin:auto;
+   
+}
+
+.grid{
+    max-width: 1200px;
+    //$max-width
+    //margin:auto;
+   
+
+
+    &__row{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: $gutter;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        @media (min-width: $brotpunktur1){
+            flex-direction: row;
+        }
+        
+        
+    }
+
+}
+
+.lecture{
+    display:flex;
+    flex-direction:column-reverse;
+    //flex-wrap:wrap;
+    padding: $gutter;
+    
+    width: 100%;
+    height:100%;
+
+    @media (min-width: $brotpunktur1){
+        width: 50%;
+    }
+
+    @media (min-width: $brotpunktur2){
+        width: 33%;
+    }
+
+    &:hover{
+        cursor:pointer;
+    }
+    &__image{
+        max-height:100%;
+        max-width:100%;
+    }
+    &__image-img{
+        max-height:100%;
+        max-width:100%;
+    }
+    
+    &__title{
+        background-color: $grar3;
+        font-family: $leturFyrirsagnir;
+        font-size: $leturstaerd2;
+
+    }
+    &__category{
+        text-transform: uppercase;
+        background-color: $grar3;
+        font-family: $leturMeginmal;
+    }
+}
+
+.index-buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+     @media (min-width: $brotpunktur1){
+         
+     }
+    
+    
+    &__html-butt, &__css-butt, &__js-butt{
+        padding: 5px;      
+        border-radius: 10px;
+        font-size: $leturstaerd2;
+        font-family: $leturFyrirsagnir;
+        font-weight:bold;
+        background-color: $grar3;
+        transition: background-color $hreyfing;
+        margin: $gutter;
+
+        @media (min-width:$brotpunktur1){
+            margin: $gutter*2;
+        }
+    &:hover{
+        background-color: $grar1;
+    }
+    &:focus{
+        outline:none;
+    }
+    }
+}
+
+.js-active, .css-active, .html-active{
+    background-color: $graenn2;
+
+    &:hover{
+        background-color: $graenn1;
+    }
+}
+
+.header{
+    background-image: url("/img/header.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 25vh;
+
+    &__content{
+        display:flex;
+        height:100%;
+        flex-direction: column;
+        justify-content: center;
+        background-color:  rgba(#fff, 0.4);
+    }
+}
+
+

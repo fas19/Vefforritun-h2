@@ -28,9 +28,11 @@
         padding: $gutter;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
+        
+        
         @media (min-width: $brotpunktur1){
             flex-direction: row;
+            justify-content: space-between;
             
         }
 
@@ -123,24 +125,30 @@
     width: 100%;
     padding-top: $gutter;
 
+    
+
      @media (min-width: $brotpunktur1){
          
      }
     
     
     &__html-butt, &__css-butt, &__js-butt{
-        padding: 7px;      
+            
         border-radius: 10px;
         font-size: $leturstaerd2;
         font-family: $leturFyrirsagnir;
         font-weight:bold;
         background-color: $grar3;
         transition: background-color $hreyfing;
-        margin: $gutter;
+        margin: $gutter*0.5;
         border:none;
+        @media (min-width: 500px){
+            margin: $gutter;
+        }
         
 
         @media (min-width:$brotpunktur1){
+            padding: 7px;
             margin: $gutter*2;
         }
     &:hover{
@@ -166,7 +174,9 @@
 }
 
 .index-h1{
+    @media (min-width: 600px){
     letter-spacing: 0.5em;
+    }
 }
 
 

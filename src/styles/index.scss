@@ -3,11 +3,18 @@
 .main{
     max-width: 1500px;
     margin:auto;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
    
 }
 
 .grid{
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
     max-width: 1200px;
+    align-content: center;
     //$max-width
     //margin:auto;
    
@@ -23,6 +30,11 @@
         justify-content: center;
         @media (min-width: $brotpunktur1){
             flex-direction: row;
+            
+        }
+
+        @media (min-width: $max-width){
+            padding:0;
         }
         
         
@@ -30,7 +42,7 @@
 
 }
 
-.lecture{
+.lectures{
     display:flex;
     flex-direction:column-reverse;
     //flex-wrap:wrap;
@@ -45,6 +57,7 @@
 
     @media (min-width: $brotpunktur2){
         width: 33%;
+        
     }
 
     &:hover{
@@ -63,19 +76,44 @@
         background-color: $grar3;
         font-family: $leturFyrirsagnir;
         font-size: $leturstaerd2;
+        display:inline-flex;
+        justify-content: space-between;
 
+    }
+
+    &__checked{
+        color:$graenn1;
+        padding-right:$gutter*0.5;
+    }
+    &__h2{
+
+        &-text{
+            order:-1;
+            padding: $gutter*0.5;
+        }
+        
     }
     &__category{
         text-transform: uppercase;
         background-color: $grar3;
         font-family: $leturMeginmal;
+        font-size: $leturstaerd1;
+        font-weight: normal;
+    }
+    &__noImg{
+        @media (min-width:1200px){
+            background-color: $grar3;
+            height:207px;
+        }
     }
 }
+
 
 .index-buttons{
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-top: $gutter;
 
      @media (min-width: $brotpunktur1){
          
@@ -83,7 +121,7 @@
     
     
     &__html-butt, &__css-butt, &__js-butt{
-        padding: 5px;      
+        padding: 7px;      
         border-radius: 10px;
         font-size: $leturstaerd2;
         font-family: $leturFyrirsagnir;
@@ -91,6 +129,8 @@
         background-color: $grar3;
         transition: background-color $hreyfing;
         margin: $gutter;
+        border:none;
+        
 
         @media (min-width:$brotpunktur1){
             margin: $gutter*2;
@@ -111,19 +151,46 @@
         background-color: $graenn1;
     }
 }
+.index-header{
+    background-image: url("/img/header.jpg");
+}
 
 .header{
-    background-image: url("/img/header.jpg");
     background-repeat: no-repeat;
     background-size:cover;
-    min-height: 25vh;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &__content{
         display:flex;
         height:100%;
+        width:100%;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         background-color:  rgba(#fff, 0.4);
+        padding-top: $gutter*6;
+        padding-bottom: $gutter*6;
+
+        @media (min-width: $max-width){
+            padding-top:$gutter*8;
+            padding-bottom:$gutter*8;
+        }
+    }
+
+    &__h3{
+        font-family: $leturMeginmal;
+        text-transform: uppercase;
+        
+    }
+
+    &__h1{
+        font-family: $leturFyrirsagnir;   
+        font-size: $leturstaerd4;   
     }
 }
 

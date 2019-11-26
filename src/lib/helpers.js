@@ -1,3 +1,9 @@
+import { isStored } from './storage';
+
+//function isStored(slug) {
+  //return localStorage.getItem(slug) === 'active';
+//}
+
 export function empty(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
@@ -37,6 +43,7 @@ export function getData() {
   return json;
 }
 
+
 function displayLecture(el, data) {
   let thumbnail;
   if (data.thumbnail == null) {
@@ -57,22 +64,23 @@ function displayLecture(el, data) {
   lectureImage.className = 'lectures__image';
   const lectureTitleH2 = document.createElement('h2');
   lectureTitleH2.className = 'lectures__h2';
-
+  lectureTitleH2.classList.add('lectures__h2-text')
   const lectureCategoryH3 = document.createElement('h3');
   lectureCategoryH3.className = 'lectures__h3';
+  
 
   // Hér þarf að koma virkni til að virkja ef búið er að klára að lesa fyrirlesturinn..
-  if (Math.floor((Math.random()* 11) > 8)) {
+  if (isStored(data.slug)) {
     lectureTitle.classList.add('lectures__title-active');
     const checked = document.createElement('h2');
-    checked.classList.add('lectures__h2', 'lectures__checked');
+    checked.classList.add('lectures__h2', 'lectures__checked', 'lectures__h2-checked');
     checked.appendChild(document.createTextNode('✓'));
     console.log('fyrirlestur kláraður');
-    lectureTitleH2.appendChild(document.createTextNode('lololo'));
+    lectureTitleH2.appendChild(document.createTextNode(title));
     lectureTitle.appendChild(checked);
 
   } else {
-    lectureTitleH2.appendChild(document.createTextNode(title));
+  lectureTitleH2.appendChild(document.createTextNode(title));
   }
 
   lectureCategoryH3.appendChild(document.createTextNode(category));

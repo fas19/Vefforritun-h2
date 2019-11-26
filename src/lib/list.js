@@ -60,11 +60,11 @@ function loadLecture(e) {
   //  debugger;
   console.log(e.target);
   const parent = e.target.parentNode.parentNode;
-  const currentSlug = parent.querySelector('.lectures__h2').textContent;
+  const currentSlug = parent.querySelector('.lectures__h2-text').textContent;
 
   // var hehe = blah.textContent;
   for  (var x of jsonData.lectures){
-    debugger;
+    //debugger;
      if (x.title == currentSlug){
        //  console.log('scooore');
        var slug = x.slug;

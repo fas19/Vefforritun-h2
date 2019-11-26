@@ -9,6 +9,7 @@ export function displayVideo(element, data) {
 
   const div = el('div', video);
   div.className = 'type__div';
+  div.classList.add('type__div--video');
 
   element.appendChild(div);
 }

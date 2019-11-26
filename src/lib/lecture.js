@@ -32,11 +32,10 @@ export default class Lecture {
     const headerContent = el('div', headerCategory, headerTitle);
     headerContent.className = 'header__content';
 
-    if (this.img !== 'none') {
-      headerContent.style.backgroundImage = `url(${this.image})`;
-    } else {
-      headerContent.style.backgroundColor = '#aaa';
-    }
+    
+    headerContent.style.backgroundColor = '#aaa';
+    headerContent.style.backgroundImage = `url(${this.image})`;
+
 
     const header = el('header', headerContent);
     header.className = 'lecture__header';

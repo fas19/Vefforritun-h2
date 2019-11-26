@@ -1,0 +1,64 @@
+@import "config";
+
+.lecture-page {
+    display: flex;
+
+    margin-right: -($gutter /2);
+    margin-left: -($gutter /2);
+
+    margin-bottom: $gutter;
+    flex-wrap: wrap;
+}
+
+.lecture {
+    width: 100%;
+    padding-right: $gutter /2;
+    padding-left: $gutter /2;
+
+    margin-bottom: $gutter *2;
+
+    @media (min-width: 800px){
+        width: (8/12 * 100) * 1%;
+    }
+
+    // &__footer {}
+}
+
+.type {
+
+    
+
+    &__div {
+        margin-top: $gutter;
+    }
+
+    /* &__iframe {
+        position: absolute;
+        // max-width: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    } */
+
+    &__text {
+    }
+
+    &__bq {}
+
+    &__attribute {}
+
+    &__img {}
+
+    &__cite {}
+
+    &__h2 {}
+
+    &__ul {}
+
+    &__li {}
+
+    &__div {}
+
+    &__code {}
+}

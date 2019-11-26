@@ -2,23 +2,25 @@ import { el } from './helpers';
 
 export function displayVideo(element, data) {
   const video = el('iframe');
-  video.className = 'iframe';
+  video.className = 'type__iframe';
   video.src = data;
+  video.setAttribute('frameborder', 0);
+  video.setAttribute('allowfullscreen', 0);
 
   const div = el('div', video);
-  div.className = 'lec-video';
+  div.className = 'type__div';
 
   element.appendChild(div);
 }
 
 export function displayText(element, data) {
   const div = el('div');
-  div.className = 'lecture__div';
+  div.className = 'type__div';
 
   const arr = data.split('\n');
   arr.forEach((parag) => {
     const p = el('p', parag);
-    p.className = 'lecture__p';
+    p.className = 'type__text';
     div.appendChild(p);
   });
 
@@ -27,27 +29,28 @@ export function displayText(element, data) {
 
 export function displayQuote(element, data, attribute) {
   const block = el('blockquote', el('p', data));
-  block.className = 'lecture__div lecture__bq';
+  block.className = 'type__bq';
 
   if (attribute !== '') {
-    const p2 = document.createElement('p');
-    p2.className = 'lecture__p';
-    p2.appendChild(document.createTextNode(attribute));
-    block.appendChild(p2);
+    const p = el('p', attribute);
+    p.className = 'type__attribute';
+    block.appendChild(p);
   }
-
-  element.appendChild(block);
+  const div = el('div', block);
+  div.className = 'type__div';
+  element.appendChild(div);
 }
 
 export function displayImg(element, data, caption) {
   const img = el('img');
-  img.className = 'lecture__img';
+  img.className = 'type__img';
   img.src = data;
   const div = el('div', img);
-  div.className = 'lecture__img';
+  div.className = 'type__div';
 
   if (caption !== '') {
     const cite = el('cite', caption);
+    cite.className = 'type__cite';
     div.appendChild(cite);
   }
 
@@ -55,31 +58,34 @@ export function displayImg(element, data, caption) {
 }
 export function displayHeading(element, data) {
   const head = el('h2', data);
-  head.className = 'header__h2';
+  head.className = 'type__h2';
 
-  element.appendChild(head);
+  const div = el('div', head);
+  div.className = 'type__div';
+  element.appendChild(div);
 }
 export function displayList(element, data) {
   const ul = el('ul');
-  ul.className = 'lecture__ul';
+  ul.className = 'type__ul';
 
   data.forEach((item) => {
     const li = el('li', item);
-    li.className = 'lecture__li';
+    li.className = 'type__li';
     ul.appendChild(li);
   });
-
-  element.appendChild(ul);
+  const div = el('div', ul);
+  div.className = 'type__div';
+  element.appendChild(div);
 }
 
 export function displayCode(element, data) {
   const div = el('div');
-  div.className = 'lecture__div';
+  div.className = 'type__div';
 
   const arr = data.split('\n');
   arr.forEach((line) => {
     const code = el('code', line);
-    code.className = 'lecture__code';
+    code.className = 'type__code';
     div.appendChild(code);
   });
 

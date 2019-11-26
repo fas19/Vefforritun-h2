@@ -2,8 +2,9 @@
 
 .lecture-page {
   display: flex;
-  margin-bottom: $gutter;
+
   margin-right: -($gutter /2);
+  margin-bottom: $gutter;
   margin-left: -($gutter /2);
 
   flex-wrap: wrap;
@@ -16,8 +17,6 @@
 
   margin-bottom: $gutter *2;
   align-items: center;
-
-
 
   &__header {
     margin-bottom: $gutter *2;
@@ -54,12 +53,11 @@
 }
 
 .type {
-  margin-bottom: $gutter *2;
-
   padding-right: $gutter/2;
   padding-left: $gutter/2;
 
   margin-right: $gutter /2;
+  margin-bottom: $gutter *2;
   margin-left: $gutter /2;
 
   @media (min-width: 800px) {
@@ -69,8 +67,8 @@
     margin-left: (2/12 * 100) * 1%;
   }
   @media (min-width: $max-width) {
-    margin-left: (2/12 * 100) * 1%;
     padding: 0;
+    margin-left: (2/12 * 100) * 1%;
   }
 
   &__div {
@@ -89,14 +87,15 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     max-width: 100%;
+
+    height: 100%;
   }
 
   &__text {
     margin-bottom: $gutter;
-    font-size: 1rem;
     font-family: $leturMeginmal;
+    font-size: 1rem;
   }
 
   &__bq {
@@ -115,11 +114,6 @@
     display: flex;
     align-items: center;
     background-color: $hviturImg;
-
-    img {
-      width: 100%;
-      background-color: $hviturImg;
-    }
   }
 
   &__cite {
@@ -127,8 +121,8 @@
   }
 
   &__h2 {
-    font-size: 2rem;
     font-family: $leturFyrirsagnir;
+    font-size: 2rem;
   }
 
   &__li {
@@ -139,3 +133,8 @@
     font-family: $leturFyrirsagnir;
   }
 }
+
+/* img {
+  width: 100%;
+  background-color: $hviturImg;
+} */

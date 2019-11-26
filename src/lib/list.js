@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 import { empty, displayLectures } from './helpers';
 
@@ -7,18 +9,37 @@ const DATA_URL = '/lectures.json';
 let jsonData;
 const container = document.querySelector('.list');
 
+
+function loadLecture(e) {
+  const parent = e.target.parentNode.parentNode;
+  const currentTitle = parent.querySelector('.lectures__h2-text').textContent;
+  for (const x of jsonData.lectures) {
+    if (x.title === currentTitle) {
+      const slug = x.slug;
+      // console.log('viljum fara á ' + slug);
+      const index = jsonData.lectures.indexOf(x);
+      localStorage.setItem('slug', x.slug);
+      localStorage.setItem('index', index);
+      // localStorage.setItem('content', x);
+      // localStorage.setItem('category', x);
+      window.location.href = (`http://localhost:3000/fyrirlestur.html?slug=${slug}`);
+    }
+  }
+}
+
+
 function addEventHandlers() {
   const lectures = document.getElementsByClassName('lectures');
-  for (var lecture of lectures) {
-  lecture.addEventListener('click', loadLecture);
-  console.log('added listener');
+  for (const lecture of lectures) {
+    lecture.addEventListener('click', loadLecture);
+  }
 }
-}
+
+
 function onClickHTML() {
   const takki = document.querySelector('.index-buttons__html-butt');
-  takki.classList.toggle('html-active')
+  takki.classList.toggle('html-active');
   empty(container);
-  console.log('yo html');
   if (buttonBoolean[0]) {
     buttonBoolean[0] = false;
   } else {
@@ -28,11 +49,11 @@ function onClickHTML() {
   addEventHandlers();
 }
 
+
 function onClickCss() {
   const takki = document.querySelector('.index-buttons__css-butt');
-  takki.classList.toggle('css-active')
+  takki.classList.toggle('css-active');
   empty(container);
-  console.log('yo css');
   if (buttonBoolean[1]) {
     buttonBoolean[1] = false;
   } else {
@@ -41,6 +62,7 @@ function onClickCss() {
   displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
   addEventHandlers();
 }
+
 
 function onClickJs() {
   const takki = document.querySelector('.index-buttons__js-butt');
@@ -56,29 +78,6 @@ function onClickJs() {
   addEventHandlers();
 }
 
-function loadLecture(e) {
-  //  debugger;
-  console.log(e.target);
-  const parent = e.target.parentNode.parentNode;
-  const currentSlug = parent.querySelector('.lectures__h2-text').textContent;
-
-  // var hehe = blah.textContent;
-  for  (var x of jsonData.lectures){
-    //debugger;
-     if (x.title == currentSlug){
-       //  console.log('scooore');
-       var slug = x.slug;
-       console.log('viljum fara á ' + slug);
-       //debugger;
-       const index = jsonData.lectures.indexOf(x);
-       localStorage.setItem('slug', x.slug);
-       localStorage.setItem('index', index);
-      // localStorage.setItem('content', x);
-      // localStorage.setItem('category', x);
-       window.location.href = (`http://localhost:3000/fyrirlestur.html?slug=${slug}`);
-      }
-    }
-}
 
 export default class List {
   constructor() {

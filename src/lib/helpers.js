@@ -1,14 +1,16 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-restricted-syntax */
 import { isStored } from './storage';
 
-//function isStored(slug) {
-  //return localStorage.getItem(slug) === 'active';
-//}
+const URL = '/lectures.json';
+
 
 export function empty(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
+
 
 export function el(name, ...children) {
   const element = document.createElement(name);
@@ -22,11 +24,9 @@ export function el(name, ...children) {
       }
     }
   }
-
   return element;
 }
 
-const URL = '/lectures.json';
 
 export function getData() {
   const response = fetch(URL);
@@ -37,25 +37,25 @@ export function getData() {
     return resp.json();
   })
     .catch((e) => {
-      console.error('Error');
+      console.error(e);
       throw Error('villa við að sækja mynd');
     });
   return json;
 }
 
 
-function displayLecture(el, data) {
+function displayLecture(element, data) {
   let thumbnail;
   if (data.thumbnail == null) {
     thumbnail = 'engin mynd';
-  } else  {
+  } else {
     thumbnail = data.thumbnail;
   }
   const category = data.category;
   const title = data.title;
 
   const lecture = document.createElement('div');
-  lecture.className ='lectures';
+  lecture.className = 'lectures';
   const lectureTitle = document.createElement('div');
   lectureTitle.className = 'lectures__title';
   const lectureCategory = document.createElement('div');
@@ -67,25 +67,22 @@ function displayLecture(el, data) {
   lectureTitleH2.classList.add('lectures__h2-text')
   const lectureCategoryH3 = document.createElement('h3');
   lectureCategoryH3.className = 'lectures__h3';
-  
 
-  // Hér þarf að koma virkni til að virkja ef búið er að klára að lesa fyrirlesturinn..
+  // Virkni ef fyrirlesturinn er nú þegar kláraður
   if (isStored(data.slug)) {
     lectureTitle.classList.add('lectures__title-active');
     const checked = document.createElement('h2');
     checked.classList.add('lectures__h2', 'lectures__checked', 'lectures__h2-checked');
     checked.appendChild(document.createTextNode('✓'));
-    console.log('fyrirlestur kláraður');
     lectureTitleH2.appendChild(document.createTextNode(title));
     lectureTitle.appendChild(checked);
-
   } else {
-  lectureTitleH2.appendChild(document.createTextNode(title));
+    lectureTitleH2.appendChild(document.createTextNode(title));
   }
 
   lectureCategoryH3.appendChild(document.createTextNode(category));
 
-  
+  //  Virkni sem setur saman fyrir titil og checkmark
   if (thumbnail === 'engin mynd') {
     const lectureImageDiv = document.createElement('div');
     lectureImageDiv.className = 'lectures__noImg';
@@ -96,16 +93,16 @@ function displayLecture(el, data) {
     lectureImageImg.src = thumbnail;
     lectureImage.appendChild(lectureImageImg);
   }
-  // setjum saman
 
-  
+  // Setjum allt saman sem við smíðuðum saman og append við síðu.
   lectureCategory.appendChild(lectureCategoryH3);
   lectureTitle.appendChild(lectureTitleH2);
   lecture.appendChild(lectureTitle);
   lecture.appendChild(lectureCategory);
   lecture.appendChild(lectureImage);
-  el.appendChild(lecture);
+  element.appendChild(lecture);
 }
+
 
 function allEqual(bool) {
   if (bool[0] === bool[1] && bool[1] === bool[2]) {
@@ -113,26 +110,17 @@ function allEqual(bool) {
   }
   return false;
 }
-export function displayLectures(el, lectKeys, lectures, buttonBool){
-  const element = el;
-  const lectureKeys = lectKeys;
+export function displayLectures(element, lectKeys, lectures, buttonBool) {
   const allLectures = lectures;
-  for (var x in allLectures){
-    console.log((allLectures[x]));
-    //vil setja inn æi fallið displayLecture allt data ef bool er okey.
-    if(allEqual(buttonBool)){
-      console.log(allLectures[x].category);
-      displayLecture(el, allLectures[x]);
-    } else if (buttonBool[0] && allLectures[x].category == 'html'){
-      console.log('html');
-      displayLecture(el, allLectures[x]);
-      
-    } else if (buttonBool[1] && allLectures[x].category == 'css') {
-      console.log('css');
-      displayLecture(el, allLectures[x]);      
-    } else if (buttonBool[2] && allLectures[x].category == 'javascript'){
-      console.log('js');
-      displayLecture(el, allLectures[x]);
+  for (const x in allLectures) {
+    if (allEqual(buttonBool)) {
+      displayLecture(element, allLectures[x]);
+    } else if (buttonBool[0] && allLectures[x].category === 'html') {
+      displayLecture(element, allLectures[x]);  
+    } else if (buttonBool[1] && allLectures[x].category === 'css') {
+      displayLecture(element, allLectures[x]);      
+    } else if (buttonBool[2] && allLectures[x].category === 'javascript') {
+      displayLecture(element, allLectures[x]);
     }
   }
 }

@@ -102,10 +102,6 @@ export default class Lecture {
     elem.classList.toggle('lecture__finish--finished');
   }
 
-  goBack() {
-    window.location.href = 'http://localhost:3000';
-  }
-
   displayFooter() {
     const notFinished = 'Klára fyrirlestur';
     const Finished = '✔ Kláraður fyrirlestur';
@@ -120,6 +116,9 @@ export default class Lecture {
 
     const backButton = el('a', 'Til baka');
     backButton.classList.add('lecture__back');
+    
+    // LOCAL EÐA Internet
+    //  backButton.setAttribute('href', 'http://notendur.hi.is/fas19/vefforritun/hopverkefni2');
     backButton.setAttribute('href', '/');
 
     const footer = el('footer', finishButton, backButton);

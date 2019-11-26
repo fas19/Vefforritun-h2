@@ -26,8 +26,9 @@ function loadLecture(e) {
       const index = jsonData.lectures.indexOf(x);
       localStorage.setItem('slug', x.slug);
       localStorage.setItem('index', index);
-      // localStorage.setItem('content', x);
-      // localStorage.setItem('category', x);
+      
+      // LOCAL EÐA Internet
+      //  window.location.href = (`http://notendur.hi.is/fas19/vefforritun/hopverkefni2/fyrirlestur.html?slug=${slug}`);
       window.location.href = (`http://localhost:3000/fyrirlestur.html?slug=${slug}`);
     }
   }

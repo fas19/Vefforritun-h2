@@ -1,5 +1,27 @@
 # Hópverkefni 2
 
+## Keyrsla
+
+Til þess að keyra verkefnið skal fyrst klóna það með git. Það er gert með `git clone url` þar sem url er hlekkur á þetta git verkefni. Keyra skal verkefnið með því að finna staðsetningu skjals í skel (Command Promt, terminal eða álíka) og keyra skipunina `npm install`. Þá skal nota skipunina `npm run dev` eða `npm run browser-sync` til að keyra síðuna í vafra. Þess gæti verið þörf að vista index.js eða styles.scss inn í /src möppunni til að síðan keyri rétt.
+
+
+## Hópurinn
+
+Arnar Marinósson    -    arm24@hi.is
+
+Fannar Sævarsson    -    fas19@hi.is
+
+## Sýnidæmi á vefnum
+
+Sýnidæmi af verkefninu mun vera á https://notendur.hi.is/fas19/vefforritun/hopverkefni2/
+
+
+---
+---
+---
+
+## Gefin lýsing
+
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
 
 Gefnar eru [fyrirmyndir](utlit/) í `500px` og `1500px` án grindar ásamt `1500px` með grind. Allt efni skal skalast snyrtilega á milli.

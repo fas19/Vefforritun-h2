@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
@@ -11,7 +12,12 @@ const container = document.querySelector('.list');
 
 
 function loadLecture(e) {
-  const parent = e.target.parentNode.parentNode;
+  const x = 'lectures';
+  let parent = e.target;
+
+  while (parent.className !== x) {
+    parent = parent.parentNode;
+  }
   const currentTitle = parent.querySelector('.lectures__h2-text').textContent;
   for (const x of jsonData.lectures) {
     if (x.title === currentTitle) {

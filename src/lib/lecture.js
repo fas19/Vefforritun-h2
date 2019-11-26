@@ -32,10 +32,10 @@ export default class Lecture {
     const headerContent = el('div', headerCategory, headerTitle);
     headerContent.className = 'header__content';
 
-    
-    headerContent.style.backgroundColor = '#aaa';
+    if (this.image === 'none') {
+      headerContent.style.backgroundColor = '#aaa';
+    }
     headerContent.style.backgroundImage = `url(${this.image})`;
-
 
     const header = el('header', headerContent);
     header.className = 'lecture__header';
@@ -121,9 +121,6 @@ export default class Lecture {
     const backButton = el('a', 'Til baka');
     backButton.classList.add('lecture__back');
     backButton.setAttribute('href', '/');
-
-    /* const footerContent = el('div', finishButton, backButton);
-    footerContent.className = 'lecture__content'; */
 
     const footer = el('footer', finishButton, backButton);
     footer.className = 'lecture__footer';

@@ -112,9 +112,11 @@
     &__img {
         display: flex;
         align-items: center;
+        background-color: $hviturImg;
 
         img {
             width: 100%;
+            background-color: $hviturImg;
         }
     }
 

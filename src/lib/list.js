@@ -6,7 +6,7 @@ import { empty, displayLectures } from './helpers';
 
 const buttonBoolean = new Array(3).fill(false);
 const lecKeys = ['title', 'catagory', 'thumbnamil'];
-const DATA_URL = '/lectures.json';
+const DATA_URL = './lectures.json';
 let jsonData;
 const container = document.querySelector('.list');
 

@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import { isStored } from './storage';
 
-const URL = '/lectures.json';
+const URL = './lectures.json';
 
 
 export function empty(element) {

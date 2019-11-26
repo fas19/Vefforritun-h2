@@ -2,116 +2,113 @@
 
 .main {
   //max-width: 1500px;
-  margin:auto;
+  display: flex;
+  width: 100%;
+  margin: auto;
   align-items: center;
-  display:flex;
   flex-direction: column;
-  width:100%;
-  
+
 }
 
 .grid {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   max-width: 1200px;
   align-content: center;
-  //$max-width
-  //margin:auto;
-  
+
   &__row {
     display: flex;
-    flex-direction: column;
     width: 100%;
     padding: $gutter;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 
     @media (min-width: $brotpunktur1) {
       flex-direction: row;
       justify-content: space-between;
-        
+
     }
 
     @media (min-width: $max-width) {
-      padding:0;
-    }      
+      padding: 0;
+    }
   }
 }
 
 .lectures {
-  display:flex;
-  flex-direction:column-reverse;
-  //flex-wrap:wrap;
-  padding: $gutter;
-  
+  display: flex;
   width: 100%;
-  height:100%;
+  height: 100%;
+  padding: $gutter;
+  flex-direction: column-reverse;
 
   @media (min-width: $brotpunktur1) {
-      width: 50%;
+    width: 50%;
   }
 
   @media (min-width: $brotpunktur2) {
-      width: 33%;
-      
+    width: 33%;
+
   }
 
   &:hover {
-      cursor:pointer;
+    cursor: pointer;
   }
+
   &__image {
-      max-height:100%;
-      max-width:100%;
+    width: 100%;
+    height: 100%;
   }
+
   &__image-img {
-      max-height:100%;
-      max-width:100%;
+    width: 100%;
+    height: 100%;
   }
-  
+
   &__title {
-      background-color: $grar3;
-      font-family: $leturFyrirsagnir;
-      font-size: $leturstaerd2;
-      display:inline-flex;
-      justify-content: space-between;
+    display: inline-flex;
+    font-family: $leturFyrirsagnir;
+    font-size: $leturstaerd2;
+    background-color: $grar3;
+    justify-content: space-between;
 
   }
 
   &__checked {
-      color:$graenn1;
-      padding-right:$gutter*0.5;
+    padding-right: $gutter*0.5;
+    color: $graenn1;
   }
-  &__h2 {
 
-      &-text {
-          order:-1;
-          padding: $gutter*0.5;
-      }
-      
+  &__h2 {
+    &-text {
+      order: -1;
+      padding: $gutter*0.5;
+    }
+
   }
 
   &__h3 {
-      font-weight:400;
-      padding: 2px;
+    padding: 2px;
+    font-weight: 400;
   }
+
   &__category {
-      text-transform: uppercase;
-      background-color: $grar3;
-      font-family: $leturMeginmal;
-      font-size: $leturstaerd1;
+    font-family: $leturMeginmal;
+    font-size: $leturstaerd1;
+    text-transform: uppercase;
+    background-color: $grar3;
 
   }
-
 
   &__noImg {
-      @media (min-width:1200px) {
-          background-color: $grar3;
-          height:207px;
-      }
+    @media (min-width: 1200px) {
+      height: 207px;
+      background-color: $grar3;
+    }
   }
 }
-
 
 .index-buttons {
   display: flex;
@@ -119,99 +116,99 @@
   width: 100%;
   padding-top: $gutter;
 
-  
+  @media (min-width: $brotpunktur1) {
+    //
+
+  }
+
+  &__html-butt,
+  &__css-butt,
+  &__js-butt {
+
+    margin: $gutter*0.5;
+    font-family: $leturFyrirsagnir;
+    font-size: $leturstaerd2;
+    font-weight: bold;
+    background-color: $grar3;
+    border: 0;
+    border-radius: 10px;
+    transition: background-color $hreyfing;
+    @media (min-width: 500px) {
+      margin: $gutter;
+    }
 
     @media (min-width: $brotpunktur1) {
-        
+      padding: 7px;
+      margin: $gutter*2;
     }
-  
-  
-  &__html-butt, &__css-butt, &__js-butt {
-          
-      border-radius: 10px;
-      font-size: $leturstaerd2;
-      font-family: $leturFyrirsagnir;
-      font-weight:bold;
-      background-color: $grar3;
-      transition: background-color $hreyfing;
-      margin: $gutter*0.5;
-      border:none;
-      @media (min-width: 500px) {
-          margin: $gutter;
-      }
-      
 
-      @media (min-width:$brotpunktur1) {
-          padding: 7px;
-          margin: $gutter*2;
-      }
-  &:hover {
+    &:hover {
       background-color: $grar1;
-  }
-  &:focus {
-      outline:none;
-  }
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
-.js-active, .css-active, .html-active {
+.js-active,
+.css-active,
+.html-active {
   background-color: $graenn2;
 
   &:hover {
-      background-color: $graenn1;
+    background-color: $graenn1;
   }
 }
-.index-header {
-  background-image: url("/img/header.jpg");
 
+.index-header {
+  background-image: url("../img/header.jpg");
 
 }
 
 .index-h1 {
   @media (min-width: 600px) {
-  letter-spacing: 0.5em;
+    letter-spacing: 0.5em;
   }
 }
 
-
 .header {
-  background-repeat: no-repeat;
-  background-size:cover;
-  width:100%;
-  height:100%;
-  display:flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
   justify-content: center;
   align-items: center;
 
   &__content {
-      display:flex;
-      height:100%;
-      width:100%;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color:  rgba(#fff, 0.4);
-      padding-top: $gutter*6;
-      padding-bottom: $gutter*6;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-top: $gutter*6;
+    padding-bottom: $gutter*6;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(#fff, 0.4);
 
-      @media (min-width: $max-width) {
-          padding-top:$gutter*8;
-          padding-bottom:$gutter*8;
-      }
+    @media (min-width: $max-width) {
+      padding-top: $gutter*8;
+      padding-bottom: $gutter*8;
+    }
   }
 
   &__h3 {
-      font-family: $leturMeginmal;
-      font-weight: 600;
-      text-transform: uppercase;
-      
+    font-family: $leturMeginmal;
+    font-weight: 600;
+    text-transform: uppercase;
+
   }
 
   &__h1 {
-      font-family: $leturFyrirsagnir;   
-      font-size: $leturstaerd4;   
+    font-family: $leturFyrirsagnir;
+    font-size: $leturstaerd4;
   }
 }
-
-

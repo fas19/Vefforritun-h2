@@ -14,7 +14,7 @@ import { isStored, saveLecture, removeLecture } from './storage';
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
-    this.URL = '/lectures.json';
+    this.URL = './lectures.json';
     this.title = '';
     this.category = '';
     this.image = '';

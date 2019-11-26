@@ -82,12 +82,9 @@ export function displayCode(element, data) {
   const div = el('div');
   div.className = 'type__div';
 
-  const arr = data.split('\n');
-  arr.forEach((line) => {
-    const code = el('code', line);
-    code.className = 'type__code';
-    div.appendChild(code);
-  });
+  const pre = el('pre', data);
+
+  div.appendChild(pre);
 
   element.appendChild(div);
 }

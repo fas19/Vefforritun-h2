@@ -39,7 +39,7 @@ export default class Lecture {
     }
 
     const header = el('header', headerContent);
-    header.className = 'header';
+    header.className = 'lecture__header';
 
     this.container.appendChild(header);
   }
@@ -123,10 +123,10 @@ export default class Lecture {
     backButton.classList.add('lecture__back');
     backButton.setAttribute('href', '/');
 
-    const footerContent = el('div', finishButton, backButton);
-    footerContent.className = 'lecture__content';
+    /* const footerContent = el('div', finishButton, backButton);
+    footerContent.className = 'lecture__content'; */
 
-    const footer = el('footer', footerContent);
+    const footer = el('footer', finishButton, backButton);
     footer.className = 'lecture__footer';
 
     this.container.appendChild(footer);

@@ -12,10 +12,10 @@ const container = document.querySelector('.list');
 
 
 function loadLecture(e) {
-  const x = 'lectures';
+  const goal = 'lectures';
   let parent = e.target;
 
-  while (parent.className !== x) {
+  while (parent.className !== goal) {
     parent = parent.parentNode;
   }
   const currentTitle = parent.querySelector('.lectures__h2-text').textContent;

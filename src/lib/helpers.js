@@ -64,7 +64,7 @@ function displayLecture(element, data) {
   lectureImage.className = 'lectures__image';
   const lectureTitleH2 = document.createElement('h2');
   lectureTitleH2.className = 'lectures__h2';
-  lectureTitleH2.classList.add('lectures__h2-text')
+  lectureTitleH2.classList.add('lectures__h2-text');
   const lectureCategoryH3 = document.createElement('h3');
   lectureCategoryH3.className = 'lectures__h3';
 
@@ -116,9 +116,9 @@ export function displayLectures(element, lectKeys, lectures, buttonBool) {
     if (allEqual(buttonBool)) {
       displayLecture(element, allLectures[x]);
     } else if (buttonBool[0] && allLectures[x].category === 'html') {
-      displayLecture(element, allLectures[x]);  
+      displayLecture(element, allLectures[x]);
     } else if (buttonBool[1] && allLectures[x].category === 'css') {
-      displayLecture(element, allLectures[x]);      
+      displayLecture(element, allLectures[x]);
     } else if (buttonBool[2] && allLectures[x].category === 'javascript') {
       displayLecture(element, allLectures[x]);
     }

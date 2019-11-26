@@ -14,7 +14,8 @@
     "babel": "babel src --out-dir dist",
     "babel-watch": "babel src --out-dir dist --watch",
     "rollup": "rollup -c",
-    "rollup-watch": "rollup -c -w"
+    "rollup-watch": "rollup -c -w",
+    "stylelint-fix": "stylelint **/*.scss --fix"
   },
   "keywords": [],
   "author": "",

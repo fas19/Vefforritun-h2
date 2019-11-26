@@ -1,139 +1,141 @@
 @import "config";
 
 .lecture-page {
-    display: flex;
+  display: flex;
+  margin-bottom: $gutter;
+  margin-right: -($gutter /2);
+  margin-left: -($gutter /2);
 
-    margin-right: -($gutter /2);
-    margin-left: -($gutter /2);
-
-    margin-bottom: $gutter;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .lecture {
-    width: 100%;
-    padding-right: $gutter /2;
-    padding-left: $gutter /2;
+  width: 100%;
+  padding-right: $gutter /2;
+  padding-left: $gutter /2;
 
+  margin-bottom: $gutter *2;
+  align-items: center;
+
+
+
+  &__header {
     margin-bottom: $gutter *2;
+  }
+
+  &__footer {
+    display: flex;
+    margin-bottom: $gutter *3;
+    font-family: $leturFyrirsagnir;
+    color: $svartur;
+    text-decoration: none;
+    flex-direction: column;
     align-items: center;
+  }
 
-    
+  &__finish {
+    display: inline-block;
+    margin-bottom: $gutter *2;
+    font-family: $leturFyrirsagnir;
+    font-size: 1rem;
+    background: inherit;
+    border: 0;
 
-    &__header {
-        margin-bottom: $gutter *2;
+    &--finished {
+      color: $graenn1;
     }
-    &__footer {
-        display: flex;
-        margin-bottom: $gutter *3;
-        font-family: $leturFyrirsagnir;
-        color: $svartur;
-        text-decoration: none;
-        flex-direction: column;
-        align-items: center;
-    }
+  }
 
-    &__finish {
-        display: inline-block;
-        margin-bottom: $gutter *2;
-        font-family: $leturFyrirsagnir;
-        font-size: 1rem;
-        background: inherit;
-        border: 0;
-
-        &--finished {
-            color: $graenn1;
-        }
-    }
-    &__back {
-        font-family: $leturFyrirsagnir;
-        color: $svartur;
-        text-decoration: none;
-    }
+  &__back {
+    font-family: $leturFyrirsagnir;
+    color: $svartur;
+    text-decoration: none;
+  }
 }
 
 .type {
-    margin-bottom: $gutter *2;
-    margin-left: $gutter /2;
-    margin-right: $gutter /2;
+  margin-bottom: $gutter *2;
 
-    padding-right: $gutter/2;
-    padding-left: $gutter/2;
+  padding-right: $gutter/2;
+  padding-left: $gutter/2;
 
-    @media (min-width: 800px){
-        width: (8/12 * 100) * 1%;
-        padding-right: $gutter/1.2;
-        padding-left: $gutter/1.2;
-        margin-left: (2/12 * 100) * 1%;
+  margin-right: $gutter /2;
+  margin-left: $gutter /2;
+
+  @media (min-width: 800px) {
+    width: (8/12 * 100) * 1%;
+    padding-right: $gutter/1.2;
+    padding-left: $gutter/1.2;
+    margin-left: (2/12 * 100) * 1%;
+  }
+  @media (min-width: $max-width) {
+    margin-left: (2/12 * 100) * 1%;
+    padding: 0;
+  }
+
+  &__div {
+    margin-top: $gutter *2;
+
+    &--video {
+      position: relative;
+      max-width: 100%;
+      padding-bottom: 56%;
+      overflow: hidden;
     }
-    @media (min-width: $max-width) {
-        margin-left: (2/12 * 100) * 1%;
-        padding: 0;
+  }
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  &__text {
+    margin-bottom: $gutter;
+    font-size: 1rem;
+    font-family: $leturMeginmal;
+  }
+
+  &__bq {
+    padding: $gutter;
+    margin-right: -$gutter;
+    margin-left: -$gutter;
+    background-color: $grar3;
+  }
+
+  &__attribute {
+    margin-top: $gutter;
+    font-style: italic;
+  }
+
+  &__img {
+    display: flex;
+    align-items: center;
+    background-color: $hviturImg;
+
+    img {
+      width: 100%;
+      background-color: $hviturImg;
     }
+  }
 
-    &__div {
-        margin-top: $gutter *2;
+  &__cite {
+    font-style: italic;
+  }
 
-        &--video {
-            position: relative;
-            max-width: 100%;
-            padding-bottom: 56%;
-            overflow: hidden;
-        }
-    }
+  &__h2 {
+    font-size: 2rem;
+    font-family: $leturFyrirsagnir;
+  }
 
-    &__iframe {
-        position: absolute;
-        max-width: 100%;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+  &__li {
+    margin-bottom: $gutter;
+  }
 
-    &__text {
-        margin-bottom: $gutter;
-        font-size: 1rem;
-        font-family: $leturMeginmal;
-    }
-
-    &__bq {
-        padding: $gutter;
-        margin-right: -$gutter;
-        margin-left: -$gutter;
-        background-color: $grar3;
-    }
-
-    &__attribute {
-        margin-top: $gutter;
-        font-style: italic;
-    }
-
-    &__img {
-        display: flex;
-        align-items: center;
-        background-color: $hviturImg;
-
-        img {
-            width: 100%;
-            background-color: $hviturImg;
-        }
-    }
-
-    &__cite {
-        font-style: italic;
-    }
-
-    &__h2 {
-        font-size: 2rem;
-        font-family: $leturFyrirsagnir;
-    }
-
-    &__li {
-        margin-bottom: $gutter;
-    }
-
-    &__code {
-        font-family: $leturFyrirsagnir;
-    }
+  &__code {
+    font-family: $leturFyrirsagnir;
+  }
 }

@@ -1,11 +1,12 @@
 @import "config";
 
 .main{
-    max-width: 1500px;
+    //max-width: 1500px;
     margin:auto;
     align-items: center;
     display:flex;
     flex-direction: column;
+    width:100%;
    
 }
 
@@ -93,13 +94,20 @@
         }
         
     }
+
+    &__h3{
+        font-weight:400;
+        padding: 2px;
+    }
     &__category{
         text-transform: uppercase;
         background-color: $grar3;
         font-family: $leturMeginmal;
         font-size: $leturstaerd1;
-        font-weight: normal;
+
     }
+
+
     &__noImg{
         @media (min-width:1200px){
             background-color: $grar3;
@@ -153,7 +161,14 @@
 }
 .index-header{
     background-image: url("/img/header.jpg");
+
+
 }
+
+.index-h1{
+    letter-spacing: 0.5em;
+}
+
 
 .header{
     background-repeat: no-repeat;
@@ -184,6 +199,7 @@
 
     &__h3{
         font-family: $leturMeginmal;
+        font-weight: 600;
         text-transform: uppercase;
         
     }

@@ -35,10 +35,10 @@ export default class Lecture {
     if (this.image === 'none') {
       headerContent.style.backgroundColor = '#aaa';
     }
-    headerContent.style.backgroundImage = `url(${this.image})`;
 
     const header = el('header', headerContent);
     header.className = 'lecture__header';
+    header.style.backgroundImage = `url(${this.image})`;
 
     this.container.appendChild(header);
   }
